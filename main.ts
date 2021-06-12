@@ -342,6 +342,11 @@ img`
     .....ccc.....e......
     `
 ]
+let zombieSayings = [
+"I like noddles"
+"Wired scary stuff"
+"hi"
+]
 scene.setBackgroundColor(7)
 tiles.setTilemap(tilemap`level_1`)
 nextWave()
