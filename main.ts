@@ -5,14 +5,36 @@ function addZombie () {
 }
 
 function nextWave(){
+
+    info.startCountdown(10); 
 if (wave == 1){
-for (let i = 0; i < 7; i++) {
+for (let i = 0; i < 5; i++) {
 addZombie();
 }
 } else if (wave ==2){
+for (let i = 0; i < 3; i++) {
+    addZombie();
 
-} else if (wave == 3){
-}}
+}} else if (wave == 3){
+    for (let i = 0; i < 4; i++) {
+    addZombie();
+}}}
+
+info.onCountdownEnd(function() {
+    wave = wave + 1;
+    if (wave == 4){
+        game.splash("the army came!", "you are saved");
+        game.over(true);
+    }
+    game.splash("Wave " + wave +" is coming")  
+    nextWave();
+
+})
+
+    sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function(sprite: Sprite, otherSprite: Sprite) {
+        game.splash("Oh no! you've been bitten!", "You're turning into a zombie");
+        game.over(false);
+    })
 let wave = 1
 let myzombie: Sprite = null
 let zombieImgs: Image[] = []
